@@ -1,0 +1,81 @@
+*:not(figure){
+    margin: 0;
+}
+body{
+    width: 100%;
+    height: 100%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #fffafa;
+}
+.texto{
+    margin-bottom: 2rem;
+}
+#main-header{
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 800;
+    background-color: #f5f5f5;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1,h2,h3,h5,p:not(.servico){
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.servico{
+    margin-bottom: 1rem;
+}
+li,ul{
+    margin-bottom: 0.5rem;
+}
+
+header>#menu{
+    text-align: center;
+}
+#menu a{
+    text-decoration: none;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    color: black;
+}
+
+figure{
+    text-align: center;
+}
+
+figcaption{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1rem;
+}
+
+table{
+    margin:auto;
+}
+
+img{
+    width: 20rem;
+    height: 12rem;
+}
+
+.final{
+    padding-left: 2rem;
+    text-align: left;
+    background-color: blue;
+    font-size: medium;
+}
+
+.final > address{
+    font-size: 1.2rem;
+}
+
+.input{
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+input[required]{
+    background-color: chartreuse;
+}
