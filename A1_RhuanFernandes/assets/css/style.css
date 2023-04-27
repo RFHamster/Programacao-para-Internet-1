@@ -5,13 +5,25 @@ body{
     width: 100%;
     height: 100%;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: justify;
     background-color: #fffafa;
+}
+aside{
+    float: left;
+    width: 20%;
+    height: 100%;
+}
+main{
+    margin-top: 9rem;
 }
 .texto{
     margin-bottom: 2rem;
 }
 #main-header{
-    font-size: 24px;
+    top: 0;
+    position: fixed;
+    font-size: 1.5rem;
+    width: 100%;
     text-transform: uppercase;
     font-weight: 800;
     background-color: #f5f5f5;
@@ -23,6 +35,10 @@ h1,h2,h3,h5,p:not(.servico){
     margin-bottom: 2rem;
     margin-left: 1rem;
     margin-right: 1rem;
+}
+
+.titulo{
+    text-align: center;
 }
 
 .servico{
@@ -40,6 +56,10 @@ header>#menu{
     margin-right: 1rem;
     margin-left: 1rem;
     color: black;
+}
+#menu a:hover{
+    background-color: #fff;
+    font-size: 1.7rem;
 }
 
 figure{
@@ -78,4 +98,43 @@ img{
 
 input[required]{
     background-color: chartreuse;
+}
+
+input:focus:not(input[type = "radio"],input[type = "checkbox"]){
+    outline: none;
+    box-shadow: 10px 5px 5px black;
+    background-color: #0fff;
+}
+
+input[type = "radio"]:checked + label{
+    font-weight: bold;
+}
+
+input[type = "checkbox"]:checked + label{
+    font-weight: bold;
+}
+
+.agradecimento{
+    position:absolute;
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.arrumaMargem{
+    margin-top: 42rem;
+    bottom: 0;
+}
+
+@media screen and (max-width: 900px) {
+    #main-header{
+        font-size: 0.9rem;
+    }
+    .final{
+        font-size: 0.5rem;
+    }
+    .agradecimento{
+        font-size: 0.5rem;
+    }
 }
