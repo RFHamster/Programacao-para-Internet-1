@@ -22,6 +22,7 @@
     }
 
     #logo>img{
+        height: 50px;
         margin-right: 1rem;
         margin-top: 0.4rem;
     }
@@ -268,10 +269,28 @@
         font-size: 2rem;
     }
 
-    .transform th, td{
-        padding: 10px 40px 10px 40px;
+    .tabela-quem th{
+        font-size: 1.3rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .tabela-quem td{
+        font-size: 1.3rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .tabela-tra th{
+        padding: 10px 30px 10px 30px;
         font-size: 1rem;
-        text-align: center;
+        height: 50px;
+        width: 75px;
+    }
+
+    .tabela-tra td{
+        padding: 10px 30px 10px 30px;
+        font-size: 1rem;
         height: 50px;
         width: 75px;
     }
@@ -341,11 +360,28 @@
         font-size: 1.7rem;
     }
 
+    .tabela-quem th{
+        font-size: 0.9rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 
-    .transform th, td{
-        padding: 7px 20px 7px 20px;
+    .tabela-quem td{
+        font-size: 0.9rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .tabela-tra th{
+        padding: 7px 15px 7px 15px;
         font-size: 0.7rem;
-        text-align: center;
+        height: 30px;
+        width: 50px;
+    }
+
+    .tabela-tra td{
+        padding: 7px 15px 7px 15px;
+        font-size: 0.7rem;
         height: 30px;
         width: 50px;
     }

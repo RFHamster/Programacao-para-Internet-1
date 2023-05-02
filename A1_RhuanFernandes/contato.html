@@ -20,7 +20,7 @@
     </header>
     <main>
         <h2 class="titulo">Formulário de Contato</h2>
-        <form action="agradecimento.html" method="Post" enctype="multipart/form-data" >
+        <form name = "formAcad" action="agradecimento.html" method="Post" enctype="multipart/form-data" >
             <fieldset>
                 <legend>Contato</legend>
                 <fieldset>
@@ -28,14 +28,17 @@
                     <div>
                         <label for="nome">Nome:</label>
                         <input class="input" type="text" id="nome" name="nome" required>
+                        <span></span>
                     </div>
                     <div>
                         <label for="email">E-mail:</label>
                         <input class="input" type="email" id="email" name="email" required>
+                        <span></span>
                     </div>
                     <div>
-                        <label for="cpf">CPF (xxx.xxx.xxx-xx):</label>
-                        <input class="input" type="text" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" id="cpf" name="cpf">
+                        <label for="cpf">CPF:</label>
+                        <input class="input" type="text" id="cpf" name="cpf">
+                        <span></span>
                     </div>
                     <div>
                         <label for="dataNasc">Data de nascimento:</label>
@@ -59,22 +62,16 @@
                 </fieldset>
                 <fieldset>
                     <legend>Qual a sua atividade?</legend>
-                    <div>
                         <input type="checkbox" id="malhacao" name="atividade[]" value="malhacao">
                         <label for="malhacao">Malhação</label>
-                    </div>
-                    <div>
                         <input type="checkbox" id="pilates" name="atividade[]" value="pilates">
                         <label for="pilates">Pilates</label>
-                    </div>
-                    <div>
                         <input type="checkbox" id="zumba" name="atividade[]" value="zumba">
                         <label for="zumba">Zumba</label>
-                    </div>
+                        <span></span>
                 </fieldset>
                 <fieldset>
                     <legend>Motivo do Contato</legend>
-                    <div>
                         <label for="contactAbout">Assunto:</label>
                         <select id="contactAbout" name= contactAbout >
                             <option value="duvida">Dúvida</option>
@@ -88,12 +85,13 @@
                     </div>
                     <div><input type="file" accept=".png,.jpg,.jpeg,.mp4"></div>
                 </fieldset>
-                <span>
-                    <button type="submit">Submeter</button>
-                    <button type="reset">Limpar</button>
-                </span>
+                <div>
+                    <button id = "submit" type="submit">Submeter</button>
+                    <button id = "reset" type="reset">Limpar</button>
+                </div>
             </fieldset>
         </form>
+        <span></span>
     </main>
     <footer>
         <div class="final">
@@ -104,5 +102,6 @@
             </address>
         </div>
     </footer>
+    <script type="text/javascript" src="assets/js/javascript.js"></script>
 </body>
 </html>
