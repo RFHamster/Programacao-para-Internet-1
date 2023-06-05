@@ -1,11 +1,13 @@
 var nomesImg = ["assets/img/LuffyGordo.jpg", "assets/img/Dolly.jpg", "assets/img/Ximbinha.jpg", "assets/img/xaropinho.png", "assets/img/LuffyGordo.jpg", "assets/img/Dolly.jpg", "assets/img/Ximbinha.jpg", "assets/img/xaropinho.png"];
-var cartaYugi = "assets/img/CostasYugi.jpeg"
+var cartaYugi = "assets/img/CostasYugi.jpeg";
 var nomesAtuais = [];
 var target = [];
+var pont = 0;
 var cont = 0;
 var contwin = 0;
 
 window.onload = function(){
+    let pontContador = document.querySelector("#pontCont");
     let nomesImgTemp = nomesImg;
 
     var img = document.querySelectorAll("img");
@@ -38,8 +40,12 @@ window.onload = function(){
                 if(cont >= 2){
                     if(nomesAtuais[target[0]] === nomesAtuais[target[1]]){
                         contwin++;
+                        pont+=15;
                         target = [];
                     }
+                    pont-=5;
+                    let s = "Pontuação do Jogador: " + pont;
+                    pontContador.innerText = s;
                     cont = 0;
                     if(contwin >= 4){
                         const jogo = document.querySelector(".jogo");

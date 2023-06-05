@@ -1,8 +1,21 @@
 const buttonSubmit = document.querySelector("#submit");
 
-
 window.onload = function(){
     document.forms.formAcad.onsubmit = validaForm;
+    $("#area-mensagem").hide();
+    $("select").change(function (){
+        $("#area-mensagem").show();
+        var selecao = document.forms.formAcad.contactAbout.value;
+        if(selecao == "reclamacao"){
+            $("textarea").attr("placeholder", "Digite sua Reclamação");
+        }
+        if(selecao == "duvida"){
+            $("textarea").attr("placeholder", "Digite sua Dúvida");
+        }
+        if(selecao == "sugestao"){
+            $("textarea").attr("placeholder", "Digite sua Sugestão");
+        }
+    });
 };
 
 function validaForm(e) {

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <title>Formulario Academia</title>
+</head>
+<body>
+    <header id="main-header">
+        <nav class = "menu">
+            <h1>Academia dos Frangos</h1>
+            <div id="menu">
+                <a href="index.html">Home</a>
+                <a href="fotos.html">Galeria de Fotos</a>
+                <a href="contato.html">Fale Conosco</a>
+                <a href="professores.php">Professores</a>
+                <a href="exprofessores.php">Ex-Professores</a>
+            </div>  
+        </nav>
+    </header>
+    <main>
+       <h2 class = "titulo">EX - PROFESSORES</h2>
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at eros vestibulum, consectetur purus et, hendrerit ligula. Sed cursus mi metus. Morbi vitae porta risus, at vehicula ipsum. Sed in tellus risus. Cras vehicula urna arcu. Maecenas congue sapien justo, quis accumsan magna fringilla nec. Suspendisse ut eleifend ligula. Duis a luctus turpis. Nunc consectetur vitae erat non efficitur. Proin iaculis commodo pretium. Maecenas gravida justo sit amet leo maximus, at pretium orci cursus. Vestibulum a est commodo, mollis justo non, pellentesque elit. Aliquam quis nulla a dui sagittis hendrerit et sit amet odio.</p>
+        <p>Agradecemos a todos que já passaram pela academia! </p>
+        <?php
+            $professores = array("Almelia,2010,2012","Borogodan,2010,2013", "Carlos,2010,2015", "Elaine,2012,2017", "Gabriela,2012,2018", "Kolisten,2012,2019", "Manuel,2015,2020", "Maramba,2015,2020", "Pato,2017,2022", "Paulo,2017,2023");
+
+            echo "<table>";
+
+                echo "<tr><th>Nome</th><th>Ingresso</th><th>Saida</th></tr>";
+                foreach($professores as &$professor){
+                    $dados = explode(",", $professor);
+                    echo "<tr>";
+                    echo "<td>" . $dados[0] ."</td>";
+                    echo "<td>" . $dados[1] ."</td>";
+                    echo "<td>" . $dados[2] ."</td>";
+                    echo "</tr>";
+                }
+            
+
+            echo "</table>";
+        ?>
+    </main>
+    <footer>
+        <div class="final">
+            <h2>SAIBA MAIS</h2>
+            <address>    
+                <p>Rua José Soares, Numero 482, Batuque<br>Monte Carmelo/MG</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3778.4440930233845!2d-47.49844589999999!3d-18.7336904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94a5889aaa85741f%3A0x1ccfe09001a696f3!2sR.%20Jos%C3%A9%20Soares%2C%20482%20-%20Batuque%2C%20Monte%20Carmelo%20-%20MG%2C%2038500-000!5e0!3m2!1spt-BR!2sbr!4v1678449030177!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </address>
+        </div>
+    </footer>
+    <script type="text/javascript" src="assets/js/professores.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</body>
+</html>

@@ -15,12 +15,14 @@
                 <a href="index.html">Home</a>
                 <a href="fotos.html">Galeria de Fotos</a>
                 <a href="contato.html">Fale Conosco</a>
+                <a href="professores.php">Professores</a>
+                <a href="exprofessores.php">Ex-Professores</a>
             </div>  
         </nav>
     </header>
     <main>
         <h2 class="titulo">Formulário de Contato</h2>
-        <form name = "formAcad" action="agradecimento.html" method="Post" enctype="multipart/form-data" >
+        <form name = "formAcad" action="agradecimento.html" method="post" enctype="multipart/form-data" >
             <fieldset>
                 <legend>Contato</legend>
                 <fieldset>
@@ -68,20 +70,21 @@
                         <label for="pilates">Pilates</label>
                         <input type="checkbox" id="zumba" name="atividade[]" value="zumba">
                         <label for="zumba">Zumba</label>
-                        <span></span>
+                        <span id = "activiti"></span>
                 </fieldset>
                 <fieldset>
                     <legend>Motivo do Contato</legend>
                         <label for="contactAbout">Assunto:</label>
-                        <select id="contactAbout" name= contactAbout >
+                        <select id="contactAbout" name= contactAbout>
+                            <option value="vazio"></option>
                             <option value="duvida">Dúvida</option>
                             <option value="reclamacao">Reclamação</option>
                             <option value="sugestao">Sugestão</option>
                         </select>
                     </div>   
-                    <div>
-                        <label for="msg">Mensagem:</label>
-                        <textarea class="input" id="msg" maxlength="2000" required></textarea>
+                    <div id = "area-mensagem">
+                        <label id = "label-mensagem" for="msg">Mensagem:</label>
+                        <textarea class="input" id="msg" maxlength="2000" placeholder = "" required></textarea>
                     </div>
                     <div><input type="file" accept=".png,.jpg,.jpeg,.mp4"></div>
                 </fieldset>
@@ -102,6 +105,7 @@
             </address>
         </div>
     </footer>
-    <script type="text/javascript" src="assets/js/javascript.js"></script>
+    <script type="text/javascript" src="assets/js/contato.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 </html>
