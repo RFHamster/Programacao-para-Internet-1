@@ -35,8 +35,7 @@
                     <!-- limpar = reload pagina, salvar = post php -->
                     <button type="button" id="clear" class="btn btn-secondary">Limpar</button>
                     <button type="button" id="edit" class="btn btn-secondary" data-dismiss="modal">Editar</button>
-                    <button type="submit" form="formRefinanciamento" value="Update"
-                        class="btn btn-primary">Salvar</button>
+                    <button type="submit" form="formCompraVenda" value="Update" class="btn btn-primary">Salvar</button>
                 </div>
             </div>
         </div>
@@ -54,10 +53,10 @@
             <div class="collapse navbar-collapse" id="#navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="comprar.php">Catálogo</a>
+                        <a class="nav-link active" href="comprar.php">Catálogo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="refinanciar.html">Refinanciar</a>
+                        <a class="nav-link" href="refinanciar.html">Refinanciar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="atendimento.html">Atendimento</a>
@@ -66,21 +65,53 @@
             </div>
         </nav>
     </header>
-
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Menu</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Refinanciamento</li>
+            <li class="breadcrumb-item"><a href="index.php">Menu</a></li>
+            <li class="breadcrumb-item"><a href="comprar.php">Catálogo</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Comprar</li>
         </ol>
     </nav>
 
+    <?php
+    require "acesso.php";
+    $codigoProduto = $_GET["codProd"];
+    ?>
     <main>
         <div class="container">
             <h2 class="margin">FORMULÁRIO DE CONTATO</h2>
-            <form id="formRefinanciamento" name="formRefinanciamento" action="agradecimento.php?codCarro=0" method="post">
+            <form id="formCompraVenda" name="formCompraVenda"
+                action="agradecimento.php?codCarro=<?php echo $codigoProduto; ?>" method="post">
                 <fieldset>
                     <legend>
-                        <h3>REFINANCIAMENTO</h3>
+                        <?php
+                        $pdo = mysqlConnect();
+
+                        try {
+                            $sql = <<<SQL
+                                        SELECT marca, modelo, anoMod, preco
+                                        FROM carro
+                                        WHERE id = ? 
+                                    SQL;
+                            $stmt = $pdo->prepare($sql);
+                            $stmt->execute([$codigoProduto]);
+                        } catch (Exception $e) {
+                            exit($e->getMessage());
+                        }
+
+                        while ($row = $stmt->fetch()) {
+                            $marca = htmlspecialchars($row['marca']);
+                            $modelo = htmlspecialchars($row['modelo']);
+                            $anoMod = htmlspecialchars($row['anoMod']);
+                            $preco = htmlspecialchars($row['preco']);
+                            echo <<<HTML
+                                    <h3>Compra/Troca do $marca $modelo $anoMod</h3>
+                                    <h4>R$ $preco</h4>
+                                    HTML;
+                        }
+
+                        ?>
+
                     </legend>
                     <fieldset>
                         <legend>SEUS DADOS</legend>
@@ -127,30 +158,40 @@
                         </div>
                     </fieldset>
                     <fieldset>
+                        <legend>TIPO DE PAGAMENTO</legend>
+                        <div class="inp">
+                            <label for="tipo">Escolha o Tipo:</label>
+                            <select id="tipo" name="tipo">
+                                <option value="troca">Troca</option>
+                                <option value="compra">Dinheiro/Financiamento</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <fieldset class=carro-inp>
                         <legend>DADOS DO CARRO</legend>
                         <div class="inp">
                             <label for="marca">Marca:</label>
-                            <input class="input" type="text" id="marca" name="marca" required>
+                            <input class="input" type="text" id="marca" name="marca">
                             <span></span>
                         </div>
                         <div class="inp">
                             <label for="modelo">Modelo:</label>
-                            <input class="input" type="modelo" id="modelo" name="modelo" required>
+                            <input class="input" type="modelo" id="modelo" name="modelo">
                             <span></span>
                         </div>
                         <div class="inp">
                             <label for="anoFab">Ano Fabricação:</label>
-                            <input class="input" type="text" id="anoFab" name="anoFab" required>
+                            <input class="input" type="text" id="anoFab" name="anoFab">
                             <span></span>
                         </div>
                         <div class="inp">
                             <label for="anoMod">Ano Modelo:</label>
-                            <input class="input" type="text" id="anoMod" name="anoMod" required>
+                            <input class="input" type="text" id="anoMod" name="anoMod">
                             <span></span>
                         </div>
                         <div class="inp">
                             <label for="placa">Placa:</label>
-                            <input class="input" type="text" id="placa" name="placa" required>
+                            <input class="input" type="text" id="placa" name="placa">
                             <span></span>
                         </div>
                     </fieldset>
@@ -182,8 +223,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         <h5>COMPRAR OU VENDER</h5>
-                        <h6><a href="comprar.php"> Carros usados ou seminovos</a></h6>
-                        <h6><a href="comprar.php"> Motos usadas ou seminovas</a></h6>
+                        <h6><a href="comprar.php">Carros usados ou seminovos</a></h6>
+                        <h6><a href="comprar.php">Motos usadas ou seminovas</a></h6>
                         <h6><a href="comprar.php">Vender o seu veículo</a></h6>
                     </div>
                     <div class="col-md-3">
@@ -245,7 +286,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <script src="assets/js/scriptRef.js"></script>
+    <script src="assets/js/scriptCompraVenda.js"></script>
 </body>
 
 </html>

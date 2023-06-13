@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/styleAtendimento.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/styleCat.css">
 </head>
 
 <body>
@@ -26,73 +26,72 @@
             <div class="collapse navbar-collapse" id="#navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link " href="comprar.php">Catálogo</a>
+                        <a class="nav-link active" href="comprar.php">Catálogo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="refinanciar.html">Refinanciar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="atendimento.html">Atendimento</a>
+                        <a class="nav-link" href="atendimento.html">Atendimento</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
+
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Menu</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Atendimento</li>
+            <li class="breadcrumb-item"><a href="index.html">Menu</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Catálogo</li>
         </ol>
     </nav>
 
     <main>
-        <section class="onde-est">
-            <h2 class="margin">NOSSA HISTÓRIA</h2>
-            <img class="img-prin" src="assets/img/frontVw.jpeg" alt="Parte frontal da empresa">
-            <p class="main-text">Somos uma Concessionária de Veículos que está no mercado a mais de 15 anos, realizando
-                sonhos do povo de Monte Carmelo e Região de ter o seu carro próprio.
-                Nosso atendimento, aperfeiçoado através de anos de mercado, te propoe uma experiência diferente ao
-                comprar um carro, você terá atenção completa dos nossos vendedores e
-                buscaremos o máximo ao nosso alcance para conseguir realizar o seu sonho de possuir um seminovo de
-                grande qualidade.
-            </p>
-        </section>
-        <section class="onde-est">
-            <h2 class="margin">COMO COMPRAR OU VENDER?</h2>
-            <p class="main-text">Para conseguir atender a todos interessados, você pode nos contactar por diversos
-                meios, dentre eles: </p>
+        <section class="serviços">
+            <div class="margin">
+                <h2>CATÁLOGO</h2>
+            </div>
             <div class="container-fluid vender text-center margin">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4">
-                            <a href="https://www.google.com/maps/place/Vw+Veículos+E+Transportes/@-18.7268569,-47.5019202,15z/data=!4m2!3m1!1s0x0:0x890b20f6ca587293?sa=X&ved=2ahUKEwiRs4m2lK3_AhWbg5UCHT6cCQ0Q_BJ6BAgrEAg"
-                                target="_blank">
-                                <h3>NOS VISITAR</h3>
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15114.3875844765!2d-47.5019202!3d-18.7268569!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94a588936cf81487%3A0x890b20f6ca587293!2sVw%20Ve%C3%ADculos%20E%20Transportes!5e0!3m2!1spt-BR!2sbr!4v1686588494874!5m2!1spt-BR!2sbr"
-                                    width="270" height="200" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                <p class="texto">Ficaremos honrados com a sua visita, e estaremos de esperando aqui na
-                                    Avenida da Imprensa, n° 25, no bairro Boa Vista aqui em Monte Carmelo/MG</p>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="https://wa.me/message/KQTVRQF5M2JYM1" target="_blank">
-                                <h3>NOS LIGAR</h3>
-                                <img src="assets/img/telefone.png" width="150" height="150">
-                                <p class="texto">Estaremos esperando a sua ligação ou mensagem no WhatsApp nos seguintes
-                                    números: <br>(34) 3842-6090 <br>(34) 9 9302-0048 <br>(34) 9 9171-7463</p>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="comprar.php">
-                                <h3>PELO SITE</h3>
-                                <img src="assets/img/internet.png" width="150" height="150">
-                                <p class="texto">Navegue pelos nossos produtos na aba Catálogo e, ao se interessar pelo
-                                    automóvel, é só clicar em comprar e preencher o formulário, que depois entraremos em
-                                    contato. Fique a vontade para nos ligar também!</p>
-                            </a>
-                        </div>
+                        <?php
+                        require "acesso.php";
+                        $pdo = mysqlConnect();
+
+                        try {
+                            $sql = <<<SQL
+                                        SELECT id, marca, modelo, anoMod, preco, caminhoIMG, descricao
+                                        FROM carro
+                                    SQL;
+                            $stmt = $pdo->query($sql);
+                        } catch (Exception $e) {
+                            exit($e->getMessage());
+                        }
+
+                        while ($row = $stmt->fetch()) {
+                            $id = htmlspecialchars($row['id']);
+                            $marca = htmlspecialchars($row['marca']);
+                            $modelo = htmlspecialchars($row['modelo']);
+                            $anoMod = htmlspecialchars($row['anoMod']);
+                            $preco = htmlspecialchars($row['preco']);
+                            $caminhoIMG = htmlspecialchars($row['caminhoIMG']);
+                            $descricao = htmlspecialchars($row['descricao']);
+
+                            $stringH = "formCompra.php?codProd=" . $id;
+                            echo <<<HTML
+                                    <div class="col-md-4">
+                                        <div class="content">
+                                            <a href="$stringH">
+                                                <img src="$caminhoIMG" width="320" height="280">
+                                                <h4>$marca $modelo $anoMod</h4>
+                                                <h5>R$ $preco</h5>
+                                                <h5>$descricao</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    HTML;
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

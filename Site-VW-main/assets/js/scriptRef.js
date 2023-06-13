@@ -105,11 +105,12 @@ function validaForm(e) {
             form.cnh.style.border = "2px solid red";
             formValido = false;
         }
+        if(formValido){
+            mensagem += "CNH: " + form.cnh.value + " <br>   ";
+        }
     }
 
-    if(formValido){
-        mensagem += "CNH: " + form.cnh.value + " <br>   ";
-    }
+    
 
     spanText = form.marca.nextElementSibling;
     spanText.textContent = "";
