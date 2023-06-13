@@ -115,7 +115,7 @@
                             <a href="comprar.php">Trocar o seu carro</a>
                         </h6>
                         <h6>
-                            <a href="financiar.html">Refinanciar</a>
+                            <a href="refinanciar.html">Refinanciar</a>
                         </h6>
                         <h6>
                             <a href="telaLogin.php">Página do ADM</a>
